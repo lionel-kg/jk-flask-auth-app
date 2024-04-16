@@ -12,4 +12,4 @@ EXPOSE 5000
 
 ENV FLASK_ENV=production
 
-CMD ["flask", "run", "--host=0.0.0.0:$PORT"]
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
