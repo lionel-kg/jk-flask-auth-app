@@ -31,7 +31,16 @@ pipeline {
                }
             }
        }
-      
+      stage('Test image') {
+        agent any
+        steps {
+            script {
+                sh '''
+                curl http://localhost:${PORT_EXPOSED} | grep -q "Redirecting..."
+                '''
+            }
+        }
+    }
       stage('Clean Container') {
           agent any
           steps {
